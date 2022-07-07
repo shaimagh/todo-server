@@ -1,4 +1,4 @@
-const user = require('./user');
-const todo = require('./todo');
+const UserModel = require('./user');
+const TodoModel = require('./todo');
 
-module.exports = { user, todo };
+module.exports = { UserModel, TodoModel };
