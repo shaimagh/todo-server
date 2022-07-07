@@ -1,0 +1,11 @@
+#webstorm
+.idea/
+
+# dependencies
+node_modules
+
+# environment variables
+.env*
+
+# debug
+npm-debug.log*
