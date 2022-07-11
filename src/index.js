@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const passportJwt = require('passport-jwt');
+const cors = require('cors');
 
 const { Strategy, ExtractJwt } = passportJwt;
 
@@ -36,6 +37,7 @@ async function startServer() {
   const app = express();
 
   app.use(bodyParser.json());
+  app.use(cors());
   app.use('/auth', UserRouter);
   app.use(
     '/todos',
