@@ -1,4 +1,3 @@
-require('dotenv/config');
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -7,6 +6,10 @@ const passportJwt = require('passport-jwt');
 const cors = require('cors');
 
 const { Strategy, ExtractJwt } = passportJwt;
+
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv/config');
+}
 
 const config = require('./config');
 const { UserRouter, TodoRouter } = require('./routers');
