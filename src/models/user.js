@@ -1,19 +1,24 @@
 const { model, Schema } = require('mongoose');
 const { genSaltSync, hashSync, compareSync } = require('bcryptjs');
 
-const userSchema = new Schema({
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-    lowercase: true
+const userSchema = new Schema(
+  {
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true
+    },
+    password: {
+      type: String,
+      required: true,
+      minLength: 6
+    }
   },
-  password: {
-    type: String,
-    required: true,
-    minLength: 6
+  {
+    timestamps: true
   }
-});
+);
 
 userSchema.pre('save', function (next) {
   if (this.isModified('password') && this.isNew) {
