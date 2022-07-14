@@ -11,7 +11,7 @@ TodoRouter.post(
   '/',
   body('title').exists().isString(),
   body('description').isString(),
-  body('date').isDate({ format: 'dd-mm-yyyy' }),
+  body('date').isDate({ format: 'mm-dd-yyyy' }),
   validateRequestInput,
   TodoController.createTodo
 );
@@ -20,7 +20,7 @@ TodoRouter.put(
   param('id').custom(isObjectId),
   body('title').exists().isString(),
   body('description').isString(),
-  body('date').isDate({ format: 'dd-mm-yyyy' }),
+  body('date').isDate({ format: 'mm-dd-yyyy' }),
   validateRequestInput,
   TodoController.updateTodo
 );
