@@ -1,8 +1,9 @@
 const HttpStatus = require('http-status-codes');
+
 const { TodoModel } = require('../models');
 
 async function getTodos(req, res) {
-  const todos = await TodoModel.find();
+  const todos = await TodoModel.find().sort('-createdAt');
 
   res.end(JSON.stringify(todos));
 }
