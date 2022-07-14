@@ -3,7 +3,9 @@ const HttpStatus = require('http-status-codes');
 const { TodoModel } = require('../models');
 
 async function getTodos(req, res) {
-  const todos = await TodoModel.find().sort('-createdAt');
+  const query = { userId: req.user._id };
+
+  const todos = await TodoModel.find(query).sort('-createdAt');
 
   res.end(JSON.stringify(todos));
 }
