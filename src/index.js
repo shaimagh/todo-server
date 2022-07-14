@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const passportJwt = require('passport-jwt');
 const cors = require('cors');
+const logger = require('morgan');
 
 const { Strategy, ExtractJwt } = passportJwt;
 
@@ -41,6 +42,7 @@ async function startServer() {
 
   app.use(bodyParser.json());
   app.use(cors());
+  app.use(logger('combined'));
   app.use('/auth', UserRouter);
   app.use(
     '/todos',
